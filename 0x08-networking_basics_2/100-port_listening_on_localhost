@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# this cript is receiving test and can reply
+
+netcat -l localhost 98
