@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script installs an nginx web server
+sudo apt-get install -y nginx
+
+sudo ufw allow 'Nginx HTTP'
+sudo mkdir -p /var/www/html
+sudo chown -R $USER:$USER /var/www
+sudo chmod -R 755 /var/www
+sudo touch /var/www/html/index.html
+echo "Hello World!" > /var/www/html/index.html
+sudo service nginx restart
