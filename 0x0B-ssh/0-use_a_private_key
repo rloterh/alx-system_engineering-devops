@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# This file is logging in with the private key in school
+ssh -i ~/.ssh/school ubuntu@34.139.153.52
