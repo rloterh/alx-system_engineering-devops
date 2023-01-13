@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# this script fixes a dockeer error:
+# curl: (52) Empty reply from server
+sudo service apache2 start
