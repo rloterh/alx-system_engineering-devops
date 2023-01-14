@@ -1,5 +1,6 @@
-# Installing s psckage in puppet
+# Install puppet-lint
 package { 'puppet-lint':
-ensure   => '2.5.0',
-provider => 'gem'
+  ensure   => 'latest',
+  name     => 'puppet-lint',
+  provider => 'gem'
 }
