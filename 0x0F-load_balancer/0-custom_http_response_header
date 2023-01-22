@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# Configures a brand new Ubuntu machine with an nginx web server
+# required for the alx task and adds a response header to the
+# nginx web server
+apt-get -y update
+apt-get -y install nginx
+ufw allow 'Nginx HTTP'
+echo "Hello World!" > /var/www/html/index.nginx-debian.html
+echo "Ceci n'est pas une page" > /usr/share/nginx/html/custom_404
+old_string="try_files \$uri \$uri\/ =404;\n	}"
+error_string="${old_string}\n	error_page 404 \/custom_404;\n	location = \/custom_404 {\n		root \/usr\/share\/nginx\/html;\n		internal;\n	}"
+final_string="${error_string}\n\n	location \/redirect_me {\n		try_files \$uri =301;\n	}"
+sed -i "N; s/$old_string/$final_string/g" /etc/nginx/sites-available/default
+# Adding a response header
+old="	server_name _;"
+new="$old\n	add_header X-Served-By ${HOSTNAME};"
+sed -i "s/$old/$new/g" /etc/nginx/sites-available/default
+service nginx restart
