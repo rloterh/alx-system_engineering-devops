@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# this script dispplays information about a domain
+# and subdomain
+subdomains=( "www" "lb-01" "web-01" "web-02" )
+
+define_domain () {
+	subdomain=$1
+	domain=$2
+
+	dig "$subdomain.$domain" | grep -i -A 1 "answer" | tail -1 | awk -v subd="$subdomain" 'BEGIN { FS = " " } ; {print "The subdomain " subd " is a " $4 " record and points to " $5 }' | cat $5
+}
+
+if [ $# -eq "1" ];
+then
+	domain="$1"
+
+	for subd in "${subdomains[@]}"
+	do
+		define_domain "$subd" "$domain"
+	done
+elif [ $# -eq "2" ];
+then
+	domain=$1
+	subdomain=$2
+	define_domain "$subd" "$domain"
+fi
