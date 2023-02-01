@@ -8,6 +8,7 @@
 #   ufw-before-forward
 #
 
+# Redirect requests from port 8080/tcp to 80/tcp
 *nat
 :PREROUTING ACCEPT [0:0]
 -A PREROUTING -p tcp --dport 8080 -j REDIRECT --to-port 80
@@ -78,4 +79,3 @@ COMMIT
 
 # don't delete the 'COMMIT' line or these rules won't be processed
 COMMIT
-
