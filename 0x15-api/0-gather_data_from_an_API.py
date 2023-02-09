@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 """
 Fetch Data from a site using api
 """
