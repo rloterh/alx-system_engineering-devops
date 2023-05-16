@@ -1,6 +1,6 @@
 # Enabling the ALX User to login and open files without error.
-# Author: Derrick Enam Azameti
-# Email: azametid@gmail.com
+# Author: Robert Loterh
+# Email: rloterh@gmail.com
 
 # Increasing the hard file limit for Holberton user.
 exec { 'increase-hard-file-limit-for-holberton-user':
