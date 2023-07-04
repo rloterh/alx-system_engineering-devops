@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-# This Script prints filenames in the 'pwd' begins from '_'
+# This script displays the content of the current directory in list format
+# Only displays the part of the name after the first dash
 
-for fname in *;
-do
-    echo "$fname" | cut -d'-' -f 2
+mylist=$(ls)
+
+for i in $mylist; do
+  echo "$i" | cut -d '-' -f2
 done
